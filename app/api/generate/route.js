@@ -28,17 +28,17 @@ Return in the following JSON format
     ]
 }
 `
-export async function POST(req){
+export async function POST(req) {
     const completion = await openai.chat.completions.create({
         messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: data },
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: data },
         ],
         model: 'gpt-3.5-turbo',
         response_format: { type: 'json_object' },
-      })
+    })
 
-      const flashcards = JSON.parse(completion.choices[0].message.content)
+    const flashcards = JSON.parse(completion.choices[0].message.content)
 
-      return NextResponse.json(flashcards.flashcards)
+    return NextResponse.json(flashcards.flashcards)
 }
