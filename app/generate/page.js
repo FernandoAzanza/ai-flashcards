@@ -1,8 +1,9 @@
 'use client'
 
 import { useUser } from '@clerk/nextjs';
+import { db } from '@/firebase';
 import { Container, Box, Typography, Paper, TextField, Button, Grid, Card, CardActionArea, CardContent, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
-import { writeBatch, doc, collection, getDoc } from 'firebase/firestore';
+import { writeBatch, doc, collection, getDoc, setDoc } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import OpenAI from 'openai';  // Import OpenAI module
