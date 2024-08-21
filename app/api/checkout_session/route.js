@@ -16,7 +16,10 @@ export async function GET(req) {
         return NextResponse.json(checkoutSession);
     } catch (error) {
         console.error('Error retrieving checkout session:', error);
-        return NextResponse.json({ error: { message: error.message } }, { status: 500 });
+        return NextResponse.json(
+            { error: { message: error.message } },
+            { status: 500 }
+        );
     }
 }
 
@@ -31,7 +34,7 @@ export async function POST(req) {
                     product_data: {
                         name: 'Pro Subscription',
                     },
-                    unit_amount: formatAmountForStripe(0),
+                    unit_amount: formatAmountForStripe(0), // Ensure this is intended
                     recurring: {
                         interval: 'month',
                         interval_count: 1,
@@ -51,6 +54,9 @@ export async function POST(req) {
         });
     } catch (error) {
         console.error('Error creating checkout session:', error);
-        return NextResponse.json({ error: { message: error.message } }, { status: 500 });
+        return NextResponse.json(
+            { error: { message: error.message } },
+            { status: 500 }
+        );
     }
 }
